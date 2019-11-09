@@ -1,0 +1,46 @@
+{block navig}
+	<li n:if="
+            $user->loggedIn AND
+            $user->getIdentity()->username == $post->created
+            "><a n:href="edit $post->id">Edit this post</a></li>
+{/block}
+
+        
+{block content}
+<div class="date">{$post->created_at|date:'F j, Y'}</div>
+
+<h1 n:block=title>{$post->title}</h1>
+
+<div class="post">{$post->content}</div>
+
+<div>
+    {snippet ShowRating}
+        <h2>Rating + {$showRating[1]} / - {$showRating[0]}</h2>
+    {/snippet}
+    
+    <div n:if="$user->loggedIn">
+        {snippet rating}
+            <p>Your rating: {$userRating}</p>
+            
+            <ul>
+                <li><a href="{link SetRating!, 1, $post->id}" class="ajax">Positive rating +</a></li>
+                <li><a href="{link SetRating!, 0, $post->id}" class="ajax">Negative rating -</a></li>
+            </ul>
+        {/snippet}
+    </div>
+</div>
+
+
+<h2>Comments</h2>
+
+<div class="comments">
+	{foreach $comments as $comment}
+		<p><b><a href="mailto:{$comment->email}" 
+                         n:tag-if="$comment->email">{$comment->name}</a></b> said:</p>
+		<div>{$comment->content}</div>
+	{/foreach}
+</div>
+
+<h2>Post new comment</h2>
+
+{control commentForm}

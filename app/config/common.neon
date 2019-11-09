@@ -1,0 +1,25 @@
+parameters:
+
+
+application:
+        errorPresenter: Error
+        mapping:
+                *: App\*Module\Presenters\*Presenter
+
+
+session:
+        expiration: 14 days
+
+
+#security:
+#        users:
+#                admin: secret  # user 'admin', password 'secret'
+
+
+services:
+        router: App\Router\RouterFactory::createRouter
+        - App\Model\DBModel
+        - App\Model\HomepageModel
+        - App\Model\PostModel
+        - App\Model\SignModel
+        authenticator: App\Model\UserManager
