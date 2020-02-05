@@ -1,0 +1,15 @@
+ZADANIE
+
+1.	Upravit jednoduchý blog v nette z https://github.com/nette/tutorial-quickstart/tree/v3.0
+
+2.	Všetku prácu s databázou vyčleniť do modelovej vrstvy.
+
+3.	Pridať jednoduchú  tabulku - user (id, name, password) a vytvorit formular pre pridavanie uzivatelov. 
+    Authentifikaciu a prihlasenie overovat proti tejto tabulke. 
+
+4.	Umožniť mazať a editovať články len pre uživatelov, ktory ho vytvorili.
+
+5.	Pridat hodnotenie článkov pomocou plus a mínus, pre prihlasenych uživatelov. 
+    Každý uživatel može pridat jeden krát plus, alebo mínus. 
+    Ak uživatel uz hodnotil, moze svoje rozhodnutie zmenit. 
+    Hodnotenie sa bude odosielat cez Ajax.
